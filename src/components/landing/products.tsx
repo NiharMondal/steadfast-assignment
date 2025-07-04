@@ -6,7 +6,6 @@ import Container from "../shared/container";
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -22,7 +21,7 @@ export default function Products({
 	const allProducts = use(products);
 
 	return (
-		<Container className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-10 pb-20">
+		<Container className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-10 pb-20 px-3 lg:px-0">
 			{allProducts?.data.length &&
 				allProducts.data.map((product) => (
 					<Card key={product.id} className="relative">

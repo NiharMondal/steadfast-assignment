@@ -9,10 +9,10 @@ import { Badge } from "../ui/badge";
 import Categories from "./categories";
 import { Breadcrumb } from "./breadcrumb";
 import Link from "next/link";
-import getCartItem from "@/lib/getCartItem";
+import useGetCartItem from "@/hooks/useGetCartItem";
 
 export default function Navbar() {
-	const cart = getCartItem();
+	const cart = useGetCartItem();
 	return (
 		<nav>
 			<div className="bg-primary h-20 py-5 px-5">

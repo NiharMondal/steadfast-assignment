@@ -2,7 +2,7 @@
 import Quantity from "@/components/shared/quantity";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, ChevronRight, Gift, Trash } from "lucide-react";
+import { ChevronRight, Gift, Trash } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { TCartProduct } from "./page";
@@ -16,7 +16,7 @@ export default function CartItems() {
 				const parsedItems: TCartProduct[] = JSON.parse(storedItems);
 				setCartItems(parsedItems);
 			} catch (error) {
-				console.error("Failed to parse cart items");
+				console.error("Failed to parse cart items", error);
 			}
 		}
 	}, []);

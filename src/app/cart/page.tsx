@@ -5,7 +5,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import CartItems from "./cart-item";
-import getCartItem from "@/lib/getCartItem";
+import useGetCartItem from "@/hooks/useGetCartItem";
+
 export type TCartProduct = {
 	id: string;
 	name: string;
@@ -17,7 +18,7 @@ export type TCartProduct = {
 	thumbnail: string;
 };
 export default function CartPage() {
-	const cart = getCartItem();
+	const cart = useGetCartItem();
 	const subTotal = cart.reduce(
 		(pre, curr) => Number(curr.discount_price) + pre,
 		0

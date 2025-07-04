@@ -1,7 +1,8 @@
 export async function getProducts() {
 	try {
 		const res = await fetch(
-			"http://157.230.240.97:9999/api/v1/shop/products"
+			"http://157.230.240.97:9999/api/v1/shop/products",
+			{ cache: "no-store" }
 		);
 		const products = await res.json();
 		return products;

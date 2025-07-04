@@ -2,11 +2,9 @@ import Link from "next/link";
 
 import {
 	Breadcrumb as BrCrumb,
-	BreadcrumbEllipsis,
 	BreadcrumbItem,
 	BreadcrumbLink,
 	BreadcrumbList,
-	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Container from "./container";

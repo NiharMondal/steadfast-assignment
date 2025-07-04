@@ -18,7 +18,6 @@ export interface IProduct {
 	rating_count: number;
 	available_stock: number;
 	badges: Badge[];
-	badgeProductVariationsExclude: any[];
 }
 
 export interface Badge {
@@ -35,8 +34,8 @@ export interface IProductDetails {
 	sku: string;
 	barcode: string;
 	product_type_id: number;
-	sub_category_id: any;
-	sub_category_child_id: any;
+	sub_category_id: string;
+	sub_category_child_id: string;
 	brand_id: number;
 	slug: string;
 	description: string;

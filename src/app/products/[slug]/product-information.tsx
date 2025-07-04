@@ -1,4 +1,5 @@
 "use client";
+import AvailableColor from "@/components/product-details/available-color";
 import AvailableSizes from "@/components/product-details/available-sizes";
 import Container from "@/components/shared/container";
 import Quantity from "@/components/shared/quantity";
@@ -17,6 +18,7 @@ export default function ProductInformation({
 	product,
 }: ProductInformationProps) {
 	const [selectedSize, setSelectedSize] = useState("XS");
+	const [selectedColor, setSelectedColor] = useState("Black");
 	const [quantity, setQuantity] = useState(1);
 
 	const addToCart = (product: IProductDetails) => {
@@ -27,7 +29,7 @@ export default function ProductInformation({
 		const newItem = {
 			id: product?.id,
 			name: product?.name,
-			color: "red", // you might want to make this dynamic later
+			color: selectedColor,
 			size: selectedSize,
 			quantity: quantity,
 			regular_price: product?.regular_price,
@@ -90,7 +92,7 @@ export default function ProductInformation({
 							</sup>
 						</p>
 
-						<div className=" flex items-center ">
+						<div className=" flex items-center mb-3">
 							<span className="mr-2 text-muted text-sm">
 								Promotion
 							</span>
@@ -104,23 +106,10 @@ export default function ProductInformation({
 						</div>
 					</div>
 					<div className="space-y-3">
-						<div className="space-y-1">
-							<p>
-								Available Color:{" "}
-								<span className="font-medium">Navy Blue</span>
-							</p>
-
-							{[...Array(4)].map((_, i) => (
-								<Image
-									key={i}
-									src={"/images/product-slide.png"}
-									alt={`Shirt ${i + 1}`}
-									width={56}
-									height={56}
-									className="size-14 object-cover rounded-md border inline-grid gap-x-3"
-								/>
-							))}
-						</div>
+						<AvailableColor
+							selectedColor={selectedColor}
+							setSelectedColor={setSelectedColor}
+						/>
 						<AvailableSizes
 							selectedSize={selectedSize}
 							setSelectedSize={setSelectedSize}

@@ -6,7 +6,7 @@ import { IProductDetails, IResponse } from "@/types";
 import React from "react";
 import ProductInformation from "./product-information";
 
-export async function getProductBySlug(
+async function getProductBySlug(
 	slug: string
 ): Promise<IResponse<IProductDetails>> {
 	try {

@@ -1,7 +1,7 @@
 import { TCartProduct } from "@/app/cart/page";
 import { useEffect, useState } from "react";
 
-export default function getCartItem() {
+export default function useGetCartItem() {
 	const [cartItems, setCartItems] = useState<TCartProduct[]>([]);
 	useEffect(() => {
 		const storedItems = window.localStorage.getItem("cart_items");
@@ -10,7 +10,7 @@ export default function getCartItem() {
 				const parsedItems: TCartProduct[] = JSON.parse(storedItems);
 				setCartItems(parsedItems);
 			} catch (error) {
-				console.error("Failed to parse cart items");
+				console.error("Failed to parse cart items", error);
 			}
 		}
 	}, []);
