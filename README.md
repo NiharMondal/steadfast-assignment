@@ -6,7 +6,7 @@ This project is a technical assessment for the **Mid-Level Front-End Developer**
 
 ## 🔗 Live Preview
 
-[Deployed Link (if any)](https://your-deployment-url.com)
+[Deployed Link](https://steadfast-assignment-eight.vercel.app/)
 
 ---
 

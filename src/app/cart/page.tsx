@@ -48,11 +48,11 @@ export default function CartPage() {
 					<h5 className="font-medium text-2xl">Order Summary</h5>
 					<div className="grid grid-cols-2 mt-4">
 						<div className="space-y-2 text-sm text-muted">
-							<p>Price (3items)</p>
+							<p>Price ({cart.length})</p>
 							<p>Shipping fee</p>
 						</div>
 						<div className="space-y-2 text-sm text-muted">
-							<p>100</p>
+							<p>{subTotal}</p>
 							<p className="text-[#3B82F6] text-xs">
 								To be added
 							</p>
