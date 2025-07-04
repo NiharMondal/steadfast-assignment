@@ -42,9 +42,9 @@ export default function ProductInformation({
 		toast.success("Product added to cart");
 	};
 	return (
-		<div className="py-4 bg-white">
-			<Container className=" grid grid-cols-1 lg:grid-cols-12 gap-10 px-5 md:px-0">
-				<div className="col-span-full lg:col-span-4 rounded-md overflow-hidden ">
+		<div className="py-4 bg-white px-3 xl:px-0">
+			<Container className="grid grid-cols-1 md:grid-cols-12 gap-10 ">
+				<div className="col-span-full md:col-span-6 lg:col-span-4 rounded-md overflow-hidden ">
 					<Image
 						src={product?.thumbnail || "/images/product-slide.png"}
 						width={380}
@@ -65,7 +65,7 @@ export default function ProductInformation({
 						))}
 					</div>
 				</div>
-				<div className="col-span-full lg:col-span-5">
+				<div className="col-span-full md:col-span-6 lg:col-span-5">
 					<div className="space-y-3">
 						<p className="font-medium text-xl">{product?.name}</p>
 						<div className="flex items-center  justify-between">
@@ -140,7 +140,7 @@ export default function ProductInformation({
 					</div>
 				</div>
 				<div className="col-span-full lg:col-span-3 space-y-5">
-					<div className="border rounded-2xl p-3 space-y-3">
+					<div className="border rounded-2xl p-3 space-y-3 min-w-full">
 						<p className="text-muted text-lg">Delivery Options</p>
 						<div className="flex gap-x-3">
 							<Box className="text-secondary" />
