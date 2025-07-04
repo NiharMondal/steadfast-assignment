@@ -18,7 +18,10 @@ export type TCartProduct = {
 };
 export default function CartPage() {
 	const cart = getCartItem();
-
+	const subTotal = cart.reduce(
+		(pre, curr) => Number(curr.discount_price) + pre,
+		0
+	);
 	return (
 		<Container className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10">
 			<div className="bg-white rounded-md p-5 col-span-full lg:col-span-2">
@@ -67,7 +70,9 @@ export default function CartPage() {
 						</div>
 						<div className="flex items-center justify-between border-t pt-2">
 							<span>Sub Total</span>
-							<span className="text-heading font-bold">00</span>
+							<span className="text-heading font-bold">
+								&#2547; {subTotal}
+							</span>
 						</div>
 						<Button className="w-full" variant={"secondary"}>
 							Proceed to checkout

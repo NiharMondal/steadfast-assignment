@@ -62,7 +62,7 @@ export default function CartItems() {
 				</Label>
 				<ChevronRight className="size-5" />
 			</div>
-			<div className="space-y-4">
+			<div className="space-y-5">
 				{cartItems.map((item) => (
 					<div key={item.name} className="flex gap-x-3">
 						<Checkbox />
@@ -76,13 +76,15 @@ export default function CartItems() {
 									className="object-center object-cover border rounded size-[100px]"
 								/>
 							</div>
-							<div className="col-span-5 space-y-3 w-full">
-								<div className="flex justify-between text-heading w-full">
-									<p> {item.name}</p>
-									<p className="text-heading font-medium">
-										{item.discount_price}{" "}
-										<sup className="line-through text-muted">
-											{item.regular_price}
+							<div className="col-span-5 space-y-3">
+								<div className="grid grid-cols-7 gap-2">
+									<p className="col-span-5 text-heading font-medium">
+										{item.name}
+									</p>
+									<p className="col-span-2 text-right font-semibold">
+										&#2547; {item.discount_price}{" "}
+										<sup className="line-through font-normal text-muted">
+											&#2547; {item.regular_price}
 										</sup>
 									</p>
 								</div>
