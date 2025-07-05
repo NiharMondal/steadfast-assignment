@@ -107,7 +107,9 @@ export default function Categories({ categories }: CategoriesProps) {
 
 const CategoryList = ({ isMobile, categories }: CategoryListProps) => {
 	return (
-		<ul className={cn(isMobile ? "pl-3 space-y-3 " : "flex gap-6 p-4")}>
+		<ul
+			className={cn(isMobile ? "pl-3 space-y-3 " : "flex gap-6 p-1 pl-5")}
+		>
 			{categories?.slice(0, 4).map((category) => (
 				<li key={category.id} className="relative group">
 					<span

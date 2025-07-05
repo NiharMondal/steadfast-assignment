@@ -1,19 +1,16 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import Container from "./container";
 import Image from "next/image";
 
 import { Button } from "../ui/button";
 import { Search, ShoppingCart, User } from "lucide-react";
 import { Badge } from "../ui/badge";
-import Categories from "./categories";
-import { Breadcrumb } from "./breadcrumb";
+
 import Link from "next/link";
 import useGetCartItem from "@/hooks/useGetCartItem";
-import { getCategories } from "@/lib/categories";
 
 export default function Navbar() {
-	const categories = getCategories();
 	const cart = useGetCartItem();
 	return (
 		<nav>
@@ -54,11 +51,6 @@ export default function Navbar() {
 					</div>
 				</Container>
 			</div>
-
-			<Suspense fallback={<div className="p-1">Loading...</div>}>
-				<Categories categories={categories} />
-			</Suspense>
-			<Breadcrumb />
 		</nav>
 	);
 }
