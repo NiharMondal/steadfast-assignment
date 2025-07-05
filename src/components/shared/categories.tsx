@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, use, useEffect, useState } from "react";
+import React, { Suspense, use } from "react";
 import Container from "./container";
 import { Box, Menu } from "lucide-react";
 import { Button } from "../ui/button";

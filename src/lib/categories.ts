@@ -4,7 +4,7 @@ export async function getCategories(): Promise<IResponse<ICategories[]>> {
 	try {
 		const res = await fetch(
 			"http://157.230.240.97:9999/api/v1/categories",
-			{ cache: "no-store" }
+			{ next: { revalidate: 50000 } }
 		);
 		const categories = await res.json();
 		return categories;
