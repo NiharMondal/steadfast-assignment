@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
 import { Toaster } from "@/components/ui/sonner";
+
 const onest = Onest({
 	variable: "--font-onest",
 	subsets: ["latin"],

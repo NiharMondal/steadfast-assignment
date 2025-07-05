@@ -15,7 +15,7 @@ export default function Navbar() {
 	const cart = useGetCartItem();
 	return (
 		<nav>
-			<div className="bg-primary h-20 py-5 px-5">
+			<div className="bg-primary h-20 py-5 px-5 overflow-hidden">
 				<Container className="h-full flex items-center justify-between">
 					<Link href={"/"}>
 						<Image
@@ -52,6 +52,7 @@ export default function Navbar() {
 					</div>
 				</Container>
 			</div>
+
 			<Categories />
 			<Breadcrumb />
 		</nav>

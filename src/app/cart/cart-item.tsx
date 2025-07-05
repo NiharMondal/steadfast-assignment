@@ -6,6 +6,7 @@ import { ChevronRight, Gift, Trash } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { TCartProduct } from "./page";
+import { toast } from "sonner";
 
 export default function CartItems() {
 	const [cartItems, setCartItems] = useState<TCartProduct[]>([]);
@@ -34,6 +35,7 @@ export default function CartItems() {
 				"cart_items",
 				JSON.stringify(updatedCart)
 			);
+			toast.error("Item removed from the cart");
 		} catch (error) {
 			console.error(
 				"Failed to parse cart_items from localStorage:",

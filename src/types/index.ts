@@ -64,3 +64,26 @@ export interface ProductDetail {
 	regular_price: string;
 	discount_price: string;
 }
+
+export interface ICategories {
+	id: number;
+	name: string;
+	slug: string;
+	image: string;
+	subcategories: Subcategory[];
+}
+
+export interface Subcategory {
+	id: number;
+	name: string;
+	slug: string;
+	image: string;
+	subchilds: Subchild[];
+}
+
+export interface Subchild {
+	id: number;
+	name: string;
+	slug: string;
+	image: string;
+}
