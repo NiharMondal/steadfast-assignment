@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, use, useEffect, useState } from "react";
 import Container from "./container";
 import { Box, Menu } from "lucide-react";
 import { Button } from "../ui/button";
 
 import Link from "next/link";
 import { getCategories } from "@/lib/categories";
-import { ICategories } from "@/types";
+import { ICategories, IResponse } from "@/types";
 import {
 	Sheet,
 	SheetContent,
@@ -16,8 +16,12 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-
+type CategoryListProps = {
+	isMobile?: boolean;
+	categories: Promise<IResponse<ICategories[]>>;
+};
 export default function Categories() {
+	const categories = getCategories();
 	return (
 		<section className="bg-white shadow-2xl px-3 lg:px-0">
 			{/**for mobile and tablet */}
@@ -45,7 +49,14 @@ export default function Categories() {
 								/>
 							</Link>
 						</SheetHeader>
-						<CategoryList isMobile={true} />
+						<Suspense
+							fallback={<div className="p-5">Loading...</div>}
+						>
+							<CategoryList
+								categories={categories}
+								isMobile={true}
+							/>
+						</Suspense>
 					</SheetContent>
 				</Sheet>
 			</div>
@@ -60,7 +71,9 @@ export default function Categories() {
 					</li>
 				</ul>
 
-				<CategoryList />
+				<Suspense fallback={<div>Loading...</div>}>
+					<CategoryList categories={categories} />
+				</Suspense>
 
 				<ul className="flex items-center gap-x-2 uppercase ">
 					<Button
@@ -90,15 +103,12 @@ export default function Categories() {
 	);
 }
 
-const CategoryList = ({ isMobile }: { isMobile?: boolean }) => {
-	const [categories, setCategories] = useState<ICategories[]>([]);
+const CategoryList = ({ isMobile, categories }: CategoryListProps) => {
+	const allCategories = use(categories);
 
-	useEffect(() => {
-		getCategories().then((data) => setCategories(data?.data));
-	}, []);
 	return (
 		<ul className={cn(isMobile ? "pl-3 space-y-3 " : "flex gap-6 p-4")}>
-			{categories.slice(0, 4).map((category) => (
+			{allCategories?.data?.slice(0, 4).map((category) => (
 				<li key={category.id} className="relative group">
 					<span
 						className={cn(
