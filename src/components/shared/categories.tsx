@@ -1,27 +1,32 @@
 "use client";
-import React, { Suspense, use } from "react";
+import React, { use } from "react";
 import Container from "./container";
 import { Box, Menu } from "lucide-react";
 import { Button } from "../ui/button";
 
 import Link from "next/link";
-import { getCategories } from "@/lib/categories";
 import { ICategories, IResponse } from "@/types";
 import {
 	Sheet,
 	SheetContent,
+	SheetDescription,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+
 type CategoryListProps = {
 	isMobile?: boolean;
+	categories: ICategories[];
+};
+type CategoriesProps = {
 	categories: Promise<IResponse<ICategories[]>>;
 };
-export default function Categories() {
-	const categories = getCategories();
+export default function Categories({ categories }: CategoriesProps) {
+	const allCategories = use(categories);
+
 	return (
 		<section className="bg-white shadow-2xl px-3 lg:px-0">
 			{/**for mobile and tablet */}
@@ -36,9 +41,11 @@ export default function Categories() {
 					<SheetContent side="left" className="bg-primary text-white">
 						<SheetHeader>
 							<SheetTitle className="sr-only">
-								Are you absolutely sure?
+								Category
 							</SheetTitle>
-
+							<SheetDescription className="sr-only">
+								Categories list
+							</SheetDescription>
 							<Link href={"/"}>
 								<Image
 									src={"/logo.svg"}
@@ -49,14 +56,11 @@ export default function Categories() {
 								/>
 							</Link>
 						</SheetHeader>
-						<Suspense
-							fallback={<div className="p-5">Loading...</div>}
-						>
-							<CategoryList
-								categories={categories}
-								isMobile={true}
-							/>
-						</Suspense>
+
+						<CategoryList
+							categories={allCategories?.data}
+							isMobile={true}
+						/>
 					</SheetContent>
 				</Sheet>
 			</div>
@@ -71,9 +75,7 @@ export default function Categories() {
 					</li>
 				</ul>
 
-				<Suspense fallback={<div>Loading...</div>}>
-					<CategoryList categories={categories} />
-				</Suspense>
+				<CategoryList categories={allCategories?.data} />
 
 				<ul className="flex items-center gap-x-2 uppercase ">
 					<Button
@@ -104,11 +106,9 @@ export default function Categories() {
 }
 
 const CategoryList = ({ isMobile, categories }: CategoryListProps) => {
-	const allCategories = use(categories);
-
 	return (
 		<ul className={cn(isMobile ? "pl-3 space-y-3 " : "flex gap-6 p-4")}>
-			{allCategories?.data?.slice(0, 4).map((category) => (
+			{categories?.slice(0, 4).map((category) => (
 				<li key={category.id} className="relative group">
 					<span
 						className={cn(

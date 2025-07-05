@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Container from "./container";
 import Image from "next/image";
 
@@ -10,8 +10,10 @@ import Categories from "./categories";
 import { Breadcrumb } from "./breadcrumb";
 import Link from "next/link";
 import useGetCartItem from "@/hooks/useGetCartItem";
+import { getCategories } from "@/lib/categories";
 
 export default function Navbar() {
+	const categories = getCategories();
 	const cart = useGetCartItem();
 	return (
 		<nav>
@@ -53,7 +55,9 @@ export default function Navbar() {
 				</Container>
 			</div>
 
-			<Categories />
+			<Suspense fallback={<div className="p-1">Loading...</div>}>
+				<Categories categories={categories} />
+			</Suspense>
 			<Breadcrumb />
 		</nav>
 	);
